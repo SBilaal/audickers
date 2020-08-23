@@ -1,0 +1,4 @@
+enum FileStatus {
+  Raw,
+  Renamed,
+}
