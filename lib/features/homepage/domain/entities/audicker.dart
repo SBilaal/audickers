@@ -7,7 +7,7 @@ class Audicker extends Equatable {
   final String path;
   final FileStatus status;
 
-  Audicker({
+  const Audicker({
     @required this.name,
     @required this.path,
     @required this.status,
