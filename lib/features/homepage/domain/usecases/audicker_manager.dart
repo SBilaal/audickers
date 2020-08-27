@@ -20,7 +20,7 @@ class AudickerManager {
     return newAudicker;
   }
 
-  Future<Audicker> delete(Audicker audicker) {
+  void delete(Audicker audicker) {
     var path = audicker.path;
     var audFile = File(path);
     audFile.deleteSync();
