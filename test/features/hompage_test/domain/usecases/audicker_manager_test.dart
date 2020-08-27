@@ -24,4 +24,26 @@ void main() {
     var renamedAudicker = await manager.rename(audicker, newName);
     expect(renamedAudicker, newAudicker);
   });
+
+  test("should get a list of raw audios", () async {
+    var audicker1 = Audicker(name: "Audicker1", path: "Whatsapp/Audicker1.opus", status: FileStatus.Raw);
+    var audicker2 = Audicker(name: "Audicker2", path: "Whatsapp/Audicker2.opus", status: FileStatus.Raw);
+    var listOfAudickers = [audicker1, audicker2]; 
+
+    when(repository.getRawAudickers()).thenAnswer((_) async => listOfAudickers);
+    List<Audicker> actualList = await manager.getRawAudickers();
+
+    expect(actualList, listOfAudickers);
+  });
+
+  test("should get a list of renamed audios", () async {
+    var audicker1 = Audicker(name: "Pity Song", path: "${manager.renamedFilesDirectory}/Pity Song.opus", status: FileStatus.Renamed);
+    var audicker2 = Audicker(name: "Lmao", path: "${manager.renamedFilesDirectory}/Lmao.opus", status: FileStatus.Renamed);
+    var listOfAudickers = [audicker1, audicker2]; 
+
+    when(repository.getRenamedAudickers()).thenAnswer((_) async => listOfAudickers);
+    List<Audicker> actualList = await manager.getRenamedAudickers();
+
+    expect(actualList, listOfAudickers);
+  });
 }
