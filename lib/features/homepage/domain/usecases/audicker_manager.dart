@@ -33,4 +33,12 @@ class AudickerManager {
     await shareFile(audicker.path, audicker.name);
   }
 
+  Future<List<Audicker>> getRawAudickers() async {
+    return await repository.getRawAudickers();
+  }
+
+  Future<List<Audicker>> getRenamedAudickers() async {
+    return await repository.getRenamedAudickers();
+  }
+
 }
