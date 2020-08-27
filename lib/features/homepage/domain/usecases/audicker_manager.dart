@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:audickers/core/services/share_file.dart';
+
 import '../../../../core/enums/file_status.dart';
 import '../entities/audicker.dart';
 import '../repositories/audicker_repository.dart';
@@ -24,6 +26,11 @@ class AudickerManager {
     var path = audicker.path;
     var audFile = File(path);
     audFile.deleteSync();
+  }
+
+  Future<void> share(Audicker audicker) async {
+    var shareFile = ShareFile();
+    await shareFile(audicker.path, audicker.name);
   }
 
 }
