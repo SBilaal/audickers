@@ -14,12 +14,12 @@ class AudickerModel extends Audicker {
   }) : super(name: name, path: path, status: status, duration: duration);
 
   factory AudickerModel.fromFile(File file) {
-    var fileNameWithExt = file.path.replaceFirst(file.parent.path, '');
     var path  = file.path;
 
-    bool isRaw = file.parent.path == "";
+    bool isRaw = file.parent.path == "/storage/emulated/0/WhatsApp/Media/WhatsApp Audio/";
     FileStatus status = isRaw ? FileStatus.Raw : FileStatus.Renamed;
 
+    var fileNameWithExt = file.path.replaceFirst(file.parent.path, '');
     var fileName = fileNameWithExt.split('.').first;
 
     var duration = FlutterSoundHelper().duration(path);
