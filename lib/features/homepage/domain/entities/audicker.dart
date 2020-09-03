@@ -6,13 +6,15 @@ class Audicker extends Equatable {
   final String name;
   final String path;
   final FileStatus status;
+  final Future<Duration> duration;
 
   const Audicker({
     @required this.name,
     @required this.path,
     @required this.status,
+    @required this.duration,
   });
 
   @override
-  List<Object> get props => [name, path, status];
+  List<Object> get props => [name, path, status, duration];
 }
