@@ -5,7 +5,8 @@ import 'package:audickers/features/homepage/domain/entities/audicker.dart';
 import 'package:audickers/features/homepage/domain/repositories/audicker_repository.dart';
 
 class AudickerRepositoryImpl implements AudickerRepository {
-  final String rawPath = "";
+  final String rawPath = "/storage/emulated/0/WhatsApp/Media/WhatsApp Audio/";
+  //TODO Add renamedPath.
   final String renamedPath = "";
 
   @override
