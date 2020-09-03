@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:audickers/core/services/share_file.dart';
+import 'package:flutter_sound/flutter_sound.dart';
 
 import '../../../../core/enums/file_status.dart';
 import '../entities/audicker.dart';
@@ -17,8 +18,9 @@ class AudickerManager {
     var path = audicker.path;
     var extensionName = path.split('.').last;
     var newPath = "$renamedFilesDirectory/$name.$extensionName";
-    // audFile.renameSync(newPath);
-    var newAudicker = Audicker(name: name, path: newPath, status: FileStatus.Renamed);
+    File(path).renameSync(newPath);
+    var duration = FlutterSoundHelper().duration(newPath);
+    var newAudicker = Audicker(name: name, path: newPath, status: FileStatus.Renamed, duration: duration);
     return newAudicker;
   }
 
