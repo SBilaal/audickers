@@ -21,7 +21,7 @@ class AudickerRepositoryImpl implements AudickerRepository {
 
   Future<List<AudickerModel>> _getAudicker(String path) async {
     List<AudickerModel> audickerModels = [];
-    List<File> files = await Directory(renamedPath).list().toList();
+    List<File> files = await Directory(path).list().toList();
     files.forEach((file) {
       audickerModels.add(AudickerModel.fromFile(file));
     });
