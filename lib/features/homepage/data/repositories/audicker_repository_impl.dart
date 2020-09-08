@@ -7,7 +7,6 @@ import 'package:path_provider/path_provider.dart';
 
 class AudickerRepositoryImpl implements AudickerRepository {
   final String _rawPath = "/storage/emulated/0/WhatsApp/Media/WhatsApp Audio/";
-  //TODO Add renamedPath.
 
   get _renamedFilesPath async {
     return (await getApplicationDocumentsDirectory()).path + "/Audickers/Audickers";
