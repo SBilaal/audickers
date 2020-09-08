@@ -3,20 +3,24 @@ import 'dart:io';
 import 'package:audickers/features/homepage/data/models/audicker_model.dart';
 import 'package:audickers/features/homepage/domain/entities/audicker.dart';
 import 'package:audickers/features/homepage/domain/repositories/audicker_repository.dart';
+import 'package:path_provider/path_provider.dart';
 
 class AudickerRepositoryImpl implements AudickerRepository {
-  final String rawPath = "/storage/emulated/0/WhatsApp/Media/WhatsApp Audio/";
+  final String _rawPath = "/storage/emulated/0/WhatsApp/Media/WhatsApp Audio/";
   //TODO Add renamedPath.
-  final String renamedPath = "";
+
+  get _renamedFilesPath async {
+    return (await getApplicationDocumentsDirectory()).path + "/Audickers/Audickers";
+  }
 
   @override
   Future<List<Audicker>> getRawAudickers() async {
-    return await _getAudicker(rawPath);
+    return await _getAudicker(_rawPath);
   }
 
   @override
   Future<List<Audicker>> getRenamedAudickers() async {
-    return await _getAudicker(renamedPath);
+    return await _getAudicker(_renamedFilesPath);
   }
 
   Future<List<AudickerModel>> _getAudicker(String path) async {
