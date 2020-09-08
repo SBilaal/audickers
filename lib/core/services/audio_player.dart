@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_sound/flutter_sound.dart';
 
 class AudioPlayer {
@@ -40,7 +41,7 @@ class AudioPlayer {
   }
 
   Future<void> init() async {
-    await _player.openAudioSession();
+    await _player.openAudioSession(focus: AudioFocus.requestFocusAndStopOthers);
     await _player.setSubscriptionDuration(Duration(milliseconds: 10));
   }
 
