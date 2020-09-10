@@ -8,7 +8,7 @@ import 'package:path_provider/path_provider.dart';
 class AudickerRepositoryImpl implements AudickerRepository {
   final String _rawPath = "/storage/emulated/0/WhatsApp/Media/WhatsApp Audio/";
 
-  get _renamedFilesPath async {
+  Future<String> get _renamedFilesPath async {
     return (await getApplicationDocumentsDirectory()).path + "/Audickers/Audickers";
   }
 
@@ -19,7 +19,7 @@ class AudickerRepositoryImpl implements AudickerRepository {
 
   @override
   Future<List<Audicker>> getRenamedAudickers() async {
-    return await _getAudicker(_renamedFilesPath);
+    return await _getAudicker(await _renamedFilesPath);
   }
 
   Future<List<AudickerModel>> _getAudicker(String path) async {
