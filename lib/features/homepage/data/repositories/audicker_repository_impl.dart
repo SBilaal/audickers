@@ -9,7 +9,8 @@ class AudickerRepositoryImpl implements AudickerRepository {
   final String _rawPath = "/storage/emulated/0/WhatsApp/Media/WhatsApp Audio/";
 
   Future<String> get _renamedFilesPath async {
-    return (await getApplicationDocumentsDirectory()).path + "/Audickers/Audickers";
+    return (await getApplicationDocumentsDirectory()).path +
+        "/Audickers/Audickers";
   }
 
   @override
@@ -23,11 +24,16 @@ class AudickerRepositoryImpl implements AudickerRepository {
   }
 
   Future<List<AudickerModel>> _getAudicker(String path) async {
-    List<AudickerModel> audickerModels = [];
-    List<File> files = await Directory(path).list().toList();
-    files.forEach((file) {
-      audickerModels.add(AudickerModel.fromFile(file));
-    });
-    return audickerModels;
+    try {
+      List<AudickerModel> audickerModels = [];
+      List<File> files = await Directory(path).list().toList();
+      files.forEach((file) {
+        audickerModels.add(AudickerModel.fromFile(file));
+      });
+      return audickerModels;
+    } catch (e) {
+      print(e);
+      throw Exception("There was a problem retrieving the Audickers");
+    }
   }
 }
