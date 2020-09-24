@@ -64,8 +64,8 @@ class AudioPlayer {
     if (_player.isPaused) await _player.pausePlayer();
   }
 
-  Future<void> seek(int milliSeconds) async {
+  Future<void> seek(int milliseconds) async {
     if (_player.isPlaying || _player.isPaused)
-      await _player.seekToPlayer(Duration(milliseconds: milliSeconds));
+      await _player.seekToPlayer(Duration(milliseconds: milliseconds));
   }
 }
